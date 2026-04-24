@@ -47,9 +47,14 @@ const Navbar = () => {
               {item}
             </a>
           ))}
-          <button className="gold-gradient text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow-lg shadow-gold/30 hover:scale-105 transition-transform">
+          <a 
+            href="https://voz-activa-snowy.vercel.app/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="gold-gradient text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow-lg shadow-gold/30 hover:scale-105 transition-transform flex items-center justify-center"
+          >
             Empezar ahora
-          </button>
+          </a>
         </div>
 
         <button className="md:hidden text-neutral-900" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
@@ -65,13 +70,18 @@ const Navbar = () => {
           className="md:hidden bg-cream border-b border-gold/10 p-6 flex flex-col gap-4"
         >
           {['Inicio', 'Funciones', 'Pasaporte', 'Nosotros'].map((item) => (
-            <a key={item} href="#" className="text-lg font-medium text-neutral-900" onClick={() => setMobileMenuOpen(false)}>
+            <a key={item} href={`#${item.toLowerCase()}`} className="text-lg font-medium text-neutral-900" onClick={() => setMobileMenuOpen(false)}>
               {item}
             </a>
           ))}
-          <button className="gold-gradient text-white px-6 py-3 rounded-xl text-center font-semibold">
+          <a 
+            href="https://voz-activa-snowy.vercel.app/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="gold-gradient text-white px-6 py-3 rounded-xl text-center font-semibold"
+          >
             Empezar ahora
-          </button>
+          </a>
         </motion.div>
       )}
     </nav>
@@ -182,6 +192,7 @@ const PhoneMockup = () => {
 };
 
 export default function App() {
+  const [featurePage, setFeaturePage] = useState(0);
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
@@ -210,13 +221,15 @@ export default function App() {
               La primera solución de inclusión financiera diseñada para el comercio informal en Colombia. Registra, digitaliza y crece sin complicaciones.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="gold-gradient text-white px-8 py-4 rounded-2xl text-lg font-bold shadow-gold hover:scale-105 transition-transform flex items-center justify-center gap-2">
+              <a 
+                href="https://voz-activa-snowy.vercel.app/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="gold-gradient text-white px-8 py-4 rounded-2xl text-lg font-bold shadow-gold hover:scale-105 transition-transform flex items-center justify-center gap-2"
+              >
                 Empezar ahora
                 <ArrowRight className="w-5 h-5" />
-              </button>
-              <button className="px-8 py-4 rounded-2xl bg-white border border-gray-200 text-lg font-bold hover:bg-gray-50 transition-all text-charcoal text-center">
-                Ver demo
-              </button>
+              </a>
             </div>
             <div className="mt-12 grid grid-cols-3 gap-8 border-t border-gray-100 pt-8">
               <div className="flex flex-col">
@@ -296,58 +309,80 @@ export default function App() {
       {/* Features Grid */}
       <section id="funciones" className="py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-            <div className="max-w-2xl">
-              <h2 className="text-4xl font-bold mb-6 italic text-charcoal tracking-tight">Tecnología humana para el día a día</h2>
-              <p className="text-lg text-charcoal/60">Diseñamos cada función pensando en la rapidez que exige tu negocio.</p>
-            </div>
-            <div className="flex gap-4">
-              <div className="w-12 h-12 glass-card rounded-full flex items-center justify-center cursor-pointer hover:bg-gold/10 transition-colors">
-                <ArrowRight className="w-5 h-5 rotate-180" />
-              </div>
-              <div className="w-12 h-12 rounded-full gold-gradient text-white flex items-center justify-center cursor-pointer shadow-gold">
-                <ArrowRight className="w-5 h-5 font-bold" />
-              </div>
-            </div>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6 italic text-charcoal tracking-tight">Tecnología humana para el día a día</h2>
+            <p className="text-lg text-charcoal/60 max-w-2xl mx-auto">Diseñamos cada función pensando en la rapidez que exige tu negocio.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <FeatureCard 
-              icon={Mic}
-              title="Registro por Voz"
-              description="Dile a la app: 'Vendí 5 arepas a 3.000 pesos' y listo. Nuestra IA procesa y categoriza todo automáticamente."
-              delay={0}
-            />
-            <FeatureCard 
-              icon={ScanLine}
-              title="Escaneo de Cuadernos"
-              description="Sigue usando tu cuaderno si quieres. Tómale una foto y nosotros digitalizamos tus registros históricos con OCR."
-              delay={0.1}
-            />
-            <FeatureCard 
-              icon={LayoutDashboard}
-              title="Panel Simple"
-              description="Visualiza tus ganancias del día, semana o mes sin complicaciones. Gráficos claros que entiendes al instante."
-              delay={0.2}
-            />
-            <FeatureCard 
-              icon={FileText}
-              title="Pasaporte Financiero"
-              description="Generamos un reporte oficial de tu actividad comercial que puedes presentar en bancos para solicitar microcréditos."
-              delay={0.3}
-            />
-            <FeatureCard 
-              icon={Zap}
-              title="Inventario Inteligente"
-              description="Alertas cuando tus productos estrella se están agotando, basándonos en tu ritmo real de ventas."
-              delay={0.4}
-            />
-            <FeatureCard 
-              icon={ShieldCheck}
-              title="Privacidad Total"
-              description="Tus datos son tuyos. Encriptación de nivel bancario para que tu información comercial esté siempre protegida."
-              delay={0.5}
-            />
+          <motion.div 
+            key={featurePage}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {(featurePage === 0 ? [
+              {
+                icon: Mic,
+                title: "Registro por Voz",
+                description: "Dile a la app: 'Vendí 5 arepas a 3.000 pesos' y listo. Nuestra IA procesa y categoriza todo automáticamente.",
+                delay: 0
+              },
+              {
+                icon: ScanLine,
+                title: "Escaneo de Cuadernos",
+                description: "Sigue usando tu cuaderno si quieres. Tómale una foto y nosotros digitalizamos tus registros históricos con OCR.",
+                delay: 0.1
+              },
+              {
+                icon: LayoutDashboard,
+                title: "Panel Simple",
+                description: "Visualiza tus ganancias del día, semana o mes sin complicaciones. Gráficos claros que entiendes al instante.",
+                delay: 0.2
+              }
+            ] : [
+              {
+                icon: FileText,
+                title: "Pasaporte Financiero",
+                description: "Generamos un reporte oficial de tu actividad comercial que puedes presentar en bancos para solicitar microcréditos.",
+                delay: 0
+              },
+              {
+                icon: Zap,
+                title: "Inventario Inteligente",
+                description: "Alertas cuando tus productos estrella se están agotando, basándonos en tu ritmo real de ventas.",
+                delay: 0.1
+              },
+              {
+                icon: ShieldCheck,
+                title: "Privacidad Total",
+                description: "Tus datos son tuyos. Encriptación de nivel bancario para que tu información comercial esté siempre protegida.",
+                delay: 0.2
+              }
+            ]).map((feature, idx) => (
+              <FeatureCard 
+                key={feature.title}
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+                delay={feature.delay}
+              />
+            ))}
+          </motion.div>
+
+          <div className="flex justify-center gap-4 mt-12">
+            <button 
+              onClick={() => setFeaturePage(0)}
+              className={`w-12 h-12 rounded-full flex items-center justify-center cursor-pointer transition-all ${featurePage === 0 ? 'gold-gradient text-white shadow-gold' : 'glass-card text-charcoal hover:bg-gold/10'}`}
+            >
+              <ArrowRight className="w-5 h-5 rotate-180" />
+            </button>
+            <button 
+              onClick={() => setFeaturePage(1)}
+              className={`w-12 h-12 rounded-full flex items-center justify-center cursor-pointer transition-all ${featurePage === 1 ? 'gold-gradient text-white shadow-gold' : 'glass-card text-charcoal hover:bg-gold/10'}`}
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </section>
@@ -357,37 +392,60 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 items-center gap-16">
           <div className="relative">
             <motion.div 
-              initial={{ rotate: -5 }}
-              whileInView={{ rotate: 0 }}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-8 rounded-[40px] shadow-gold border border-gold/10 relative z-10"
+              transition={{ duration: 0.8 }}
+              className="relative z-10 bg-white p-8 md:p-12 rounded-[48px] shadow-2xl shadow-gold/10 border border-gold/5"
             >
-              <div className="flex justify-between items-center mb-12">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 gold-gradient rounded-full" />
-                  <h4 className="font-bold text-charcoal tracking-tight uppercase text-xs">Certificado de Actividad</h4>
-                </div>
-                <div className="bg-gold/10 text-gold px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Oficial</div>
-              </div>
-
-              <div className="space-y-6">
-                <div className="h-4 bg-neutral-100 rounded-full w-3/4" />
-                <div className="h-4 bg-neutral-100 rounded-full w-1/2" />
-                <div className="grid grid-cols-3 gap-4 pt-4">
-                  {[1, 2, 3].map(i => <div key={i} className="h-20 bg-cream rounded-2xl border border-gray-100" />)}
-                </div>
-                <div className="pt-8 border-t border-neutral-100 flex justify-between items-center">
-                  <div className="space-y-2">
-                    <p className="text-[10px] text-neutral-400 font-bold uppercase tracking-widest">Score de Confianza</p>
-                    <p className="text-2xl font-bold text-gold">A+</p>
+              <div className="max-w-md mx-auto">
+                <h4 className="text-xl font-bold text-charcoal mb-8">Tu score actual</h4>
+                
+                <div className="relative flex flex-col items-center">
+                  {/* Gauge */}
+                  <div className="relative w-64 h-32 overflow-hidden">
+                    <div className="absolute top-0 left-0 w-64 h-64 border-[16px] border-gray-100 rounded-full" />
+                    <div 
+                      className="absolute top-0 left-0 w-64 h-64 border-[16px] border-gold rounded-full"
+                      style={{ 
+                        clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)',
+                        transform: 'rotate(45deg)' 
+                      }}
+                    />
+                    <div className="absolute inset-0 flex flex-col items-center justify-end pb-2">
+                      <span className="text-5xl font-bold text-gold">745</span>
+                      <span className="text-charcoal/40 font-bold text-sm">/ 950</span>
+                    </div>
                   </div>
-                  <div className="w-16 h-16 bg-gold/5 rounded-full flex items-center justify-center">
-                    <FileText className="text-gold w-8 h-8 opacity-40" />
+
+                  <div className="mt-6 flex flex-col items-center">
+                    <div className="bg-gold/5 px-6 py-2 rounded-full flex items-center gap-2 border border-gold/10">
+                      <div className="w-2 h-2 bg-gold rounded-full" />
+                      <span className="text-gold font-bold">Aceptable</span>
+                    </div>
+                    <p className="text-charcoal/40 text-sm mt-4 text-center">
+                      Buen progreso. La constancia mejora tu score.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-3 gap-4 mt-12 pt-8 border-t border-gray-50">
+                  <div className="text-center">
+                    <p className="text-lg font-bold text-charcoal">25 días</p>
+                    <p className="text-[10px] text-charcoal/40 uppercase font-bold tracking-wider">Antigüedad</p>
+                  </div>
+                  <div className="text-center border-x border-gray-50">
+                    <p className="text-lg font-bold text-charcoal">$742k</p>
+                    <p className="text-[10px] text-charcoal/40 uppercase font-bold tracking-wider">Promedio/mes</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-lg font-bold text-charcoal">100%</p>
+                    <p className="text-[10px] text-charcoal/40 uppercase font-bold tracking-wider">Cumplimiento</p>
                   </div>
                 </div>
               </div>
             </motion.div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] aspect-square bg-gold/5 blur-[120px] rounded-full" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] aspect-square bg-gold/5 blur-[120px] rounded-full" />
           </div>
 
           <div>
@@ -412,10 +470,6 @@ export default function App() {
                 </li>
               ))}
             </ul>
-            <button className="gold-gradient text-white px-8 py-4 rounded-2xl text-lg font-bold shadow-gold flex items-center gap-3 hover:scale-105 transition-transform">
-              Descargar ejemplo
-              <ArrowRight className="w-5 h-5" />
-            </button>
           </div>
         </div>
       </section>
@@ -444,10 +498,9 @@ export default function App() {
           <div className="relative group">
             <div className="aspect-square bg-gradient-to-br from-gold/40 to-neutral-800 rounded-[64px] overflow-hidden rotate-3 group-hover:rotate-0 transition-transform duration-700 shadow-gold">
                <img 
-                src="https://picsum.photos/seed/colombia/1000/1000" 
-                alt="Comerciante colombiano" 
-                className="w-full h-full object-cover mix-blend-overlay opacity-60"
-                referrerPolicy="no-referrer"
+                src="/Mercado.png" 
+                alt="Mercado colombiano" 
+                className="w-full h-full object-cover"
                />
             </div>
             <div className="absolute -bottom-8 -left-8 glass-card p-6 rounded-3xl text-charcoal shadow-2xl max-w-[220px] -rotate-3">
@@ -469,45 +522,64 @@ export default function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 gap-12"
+          >
             {[
               {
                 name: "Manuela Maiguel",
                 role: "Co-Fundadora & CEO",
-                image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Manuela",
-                quote: "Diseñamos para las manos que trabajan y las voces que sueñan. Voz-Activa es mi compromiso con la equidad financiera en Colombia."
+                image: "/ManuelaMaiguel.png",
+                quote: "Voz-Activa es mi compromiso con la equidad financiera en Colombia. Diseñamos para las manos que trabajan y las voces que sueñan."
               },
               {
-                name: "Co-Fundadora",
-                role: "Co-Fundadora & Producto",
-                image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Partner",
-                quote: "Creemos que la tecnología debe adaptarse al ser humano, no al revés. Por eso construimos desde la empatía."
+                name: "Maileth Vallejo",
+                role: "Co-Fundadora & CTO",
+                image: "/MailethVallejo.png",
+                quote: "La tecnología debe ser un puente, no una barrera. Construimos desde la empatía para que el éxito financiero sea accesible para todos."
               }
             ].map((ceo, index) => (
               <motion.div 
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="glass-card p-12 rounded-[48px] flex flex-col md:flex-row items-center gap-8 group hover:shadow-gold transition-all duration-500"
+                transition={{ delay: 0.2 + index * 0.2 }}
+                className="glass-card p-12 rounded-[48px] flex flex-col items-center text-center gap-8 group hover:shadow-gold transition-all duration-700 overflow-hidden relative"
               >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 blur-3xl -mr-16 -mt-16 group-hover:bg-gold/10 transition-colors" />
+                
                 <div className="relative">
-                  <div className="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-gold/20 p-1 group-hover:border-gold transition-colors duration-500">
-                    <img src={ceo.image} alt={ceo.name} className="w-full h-full rounded-full object-cover bg-gold/5" />
+                  <div className="w-40 h-40 md:w-56 md:h-56 rounded-3xl border-4 border-gold/10 p-2 group-hover:border-gold/30 transition-all duration-700 rotate-3 group-hover:rotate-0">
+                    <img 
+                      src={ceo.image} 
+                      alt={ceo.name} 
+                      className="w-full h-full rounded-2xl object-cover bg-gold/5 group-hover:scale-105 transition-all duration-700" 
+                    />
                   </div>
-                  <div className="absolute -bottom-2 -right-2 w-10 h-10 gold-gradient rounded-full flex items-center justify-center text-white shadow-lg">
-                    <Zap className="w-5 h-5 fill-white" />
+                  <div className="absolute -bottom-4 -left-4 w-12 h-12 gold-gradient rounded-full flex items-center justify-center text-white shadow-xl scale-0 group-hover:scale-100 transition-transform duration-500">
+                    <Zap className="w-6 h-6 fill-white" />
                   </div>
                 </div>
-                <div className="flex-1 text-center md:text-left">
-                  <h4 className="text-2xl font-bold text-charcoal tracking-tight italic uppercase">{ceo.name}</h4>
-                  <p className="text-gold font-bold text-xs uppercase tracking-widest mt-1">{ceo.role}</p>
-                  <p className="text-charcoal/70 mt-6 leading-relaxed italic">"{ceo.quote}"</p>
+                
+                <div className="relative z-10">
+                  <h4 className="text-3xl font-bold text-charcoal tracking-tight italic uppercase">{ceo.name}</h4>
+                  <p className="text-gold font-bold text-sm uppercase tracking-[4px] mt-2 mb-8">{ceo.role}</p>
+                  
+                  <div className="relative">
+                    <span className="absolute -top-6 -left-4 text-6xl text-gold/20 font-serif">“</span>
+                    <p className="text-charcoal/70 leading-relaxed italic text-lg px-4 relative z-10">
+                      {ceo.quote}
+                    </p>
+                    <span className="absolute -bottom-10 -right-4 text-6xl text-gold/20 font-serif">”</span>
+                  </div>
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -526,12 +598,14 @@ export default function App() {
                 Únete a miles de colombianos que ya están digitalizando su éxito con la potencia de su voz.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <button className="bg-white text-gold-dark px-10 py-5 rounded-2xl text-xl font-bold shadow-2xl shadow-black/10 hover:scale-105 transition-all">
+                <a 
+                  href="https://voz-activa-snowy.vercel.app/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-white text-gold-dark px-10 py-5 rounded-2xl text-xl font-bold shadow-2xl shadow-black/10 hover:scale-105 transition-all"
+                >
                   Empieza ahora gratis
-                </button>
-                <button className="bg-black/20 backdrop-blur-md text-white border border-white/30 px-10 py-5 rounded-2xl text-xl font-bold hover:bg-black/30 transition-all">
-                  Ver demo interactiva
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -540,44 +614,17 @@ export default function App() {
 
       {/* Footer */}
       <footer className="py-20 border-t border-gray-100 px-6">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 text-charcoal/40 font-bold uppercase tracking-[2px] text-[11px]">
-          <div className="col-span-1 md:col-span-1">
-            <div className="flex items-center gap-2 mb-6 grayscale brightness-0 opacity-80">
-               <Logo className="w-8 h-8" />
-               <span className="text-xl font-bold tracking-tight uppercase">Voz<span className="font-light">Activa</span></span>
+        <div className="max-w-7xl mx-auto flex flex-col items-center text-center text-charcoal/40 font-bold uppercase tracking-[2px] text-[11px]">
+          <div className="mb-8">
+            <div className="flex items-center justify-center gap-2 mb-6">
+               <Logo className="w-12 h-12" />
+               <span className="text-2xl font-bold tracking-tight uppercase text-charcoal">Voz<span className="font-light">Activa</span></span>
             </div>
             <p className="leading-relaxed opacity-60">Digitalizando el corazón del comercio colombiano.</p>
           </div>
-          <div>
-            <p className="text-charcoal mb-6">Producto</p>
-            <ul className="space-y-4">
-              <li className="hover:text-gold transition-colors cursor-pointer">Funciones</li>
-              <li className="hover:text-gold transition-colors cursor-pointer">Pasaporte</li>
-              <li className="hover:text-gold transition-colors cursor-pointer">Seguridad</li>
-            </ul>
-          </div>
-          <div>
-            <p className="text-charcoal mb-6">Inclusión</p>
-            <ul className="space-y-4">
-              <li className="hover:text-gold transition-colors cursor-pointer">Casos de Éxito</li>
-              <li className="hover:text-gold transition-colors cursor-pointer">Impacto</li>
-              <li className="hover:text-gold transition-colors cursor-pointer">Nosotros</li>
-            </ul>
-          </div>
-          <div>
-            <p className="text-charcoal mb-6">Legal</p>
-            <ul className="space-y-4">
-              <li className="hover:text-gold transition-colors cursor-pointer">Privacidad</li>
-              <li className="hover:text-gold transition-colors cursor-pointer">Términos</li>
-            </ul>
-          </div>
         </div>
-        <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-charcoal/30 font-bold uppercase tracking-[3px]">
-          <p>© 2024 Voz-Activa Colombia. Todos los derechos reservados.</p>
-          <div className="flex gap-8">
-            <span className="hover:text-gold transition-colors cursor-pointer">LinkedIn</span>
-            <span className="hover:text-gold transition-colors cursor-pointer">Instagram</span>
-          </div>
+        <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-gray-50 flex flex-col md:flex-row justify-center items-center gap-6 text-[10px] text-charcoal/30 font-bold uppercase tracking-[3px]">
+          <p>© 2026 Voz-Activa Colombia. Todos los derechos reservados.</p>
         </div>
       </footer>
     </div>
