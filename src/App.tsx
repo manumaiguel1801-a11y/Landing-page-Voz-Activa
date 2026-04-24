@@ -498,7 +498,7 @@ export default function App() {
           <div className="relative group">
             <div className="aspect-square bg-gradient-to-br from-gold/40 to-neutral-800 rounded-[64px] overflow-hidden rotate-3 group-hover:rotate-0 transition-transform duration-700 shadow-gold">
                <img 
-                src="/Mercado.png" 
+                src="/mercado.png" 
                 alt="Mercado colombiano" 
                 className="w-full h-full object-cover"
                />
@@ -532,13 +532,13 @@ export default function App() {
               {
                 name: "Manuela Maiguel",
                 role: "Co-Fundadora & CEO",
-                image: "/ManuelaMaiguel.png",
+                image: "/manuela_maiguel.png",
                 quote: "Voz-Activa es mi compromiso con la equidad financiera en Colombia. Diseñamos para las manos que trabajan y las voces que sueñan."
               },
               {
                 name: "Maileth Vallejo",
                 role: "Co-Fundadora & CTO",
-                image: "/MailethVallejo.png",
+                image: "/maileth_vallejo.png",
                 quote: "La tecnología debe ser un puente, no una barrera. Construimos desde la empatía para que el éxito financiero sea accesible para todos."
               }
             ].map((ceo, index) => (
