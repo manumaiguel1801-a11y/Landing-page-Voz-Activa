@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-gold: #D4A017;
+  --color-gold-mid: #F2D06B;
+  --color-gold-dark: #B8860B;
+  --color-cream: #FDFBF7;
+  --color-charcoal: #2D2926;
+}
+
+@layer base {
+  body {
+    @apply bg-cream text-charcoal font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  .gold-gradient {
+    background: linear-gradient(135deg, #D4A017 0%, #F2D06B 50%, #B8860B 100%);
+  }
+  
+  .gold-text-gradient {
+    background: linear-gradient(135deg, #B8860B 0%, #D4A017 100%);
+    @apply bg-clip-text text-transparent;
+  }
+
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md border border-gold/15;
+  }
+
+  .shadow-gold {
+    box-shadow: 0 20px 40px -15px rgba(184,134,11,0.2);
+  }
+}
